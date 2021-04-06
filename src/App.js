@@ -1,7 +1,7 @@
 import './App.css';
 import { useEffect, useState } from 'react'
-import CircuitList from './containers/CircuitList'
-import SelectedCircuit from './containers/SelectedCircuit'
+import Body from './containers/Body'
+import Header from './components/Header'
 
 function App() {
 
@@ -33,8 +33,8 @@ function App() {
 
   return (
     <div className="App">
-      <CircuitList circuits={circuits} selectCircuit={selectCircuit} />
-      <SelectedCircuit selectedCircuit={selectedCircuit} />
+      <Header />
+      <Body circuits={circuits} selectCircuit={selectCircuit} selectedCircuit={selectedCircuit}/>
     </div>
   );
 }

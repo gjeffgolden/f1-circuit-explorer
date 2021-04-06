@@ -4,8 +4,8 @@ import CircuitListItem from '../components/CircuitListItem'
 export default function CircutList({ circuits, selectCircuit }) {
 
     const displayCircuitListItems = () => {
-        return circuits.map(circuit => {
-            return <CircuitListItem name={circuit.name} selectCircuit={selectCircuit} />
+        return circuits.map((circuit, i) => {
+            return <CircuitListItem key={'circuit_' + i} name={circuit.name} selectCircuit={selectCircuit} />
         })
     }
 

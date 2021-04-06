@@ -3,7 +3,7 @@ import React from 'react'
 export default function SelectedCircuit({ selectedCircuit }) {
     return (
         <div>
-            <img src={selectedCircuit.image} alt={`${selectedCircuit.name}`} />
+            {selectedCircuit.length === 0 ? "Select a Circuit" : <img src={selectedCircuit.image} alt={`${selectedCircuit.name}`} />}
         </div>
     )
 }
