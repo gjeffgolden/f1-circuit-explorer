@@ -21,8 +21,14 @@ function App() {
     .then(response => response.json())
     .catch(err => console.log(err))
     .then(data => {
-      let activeCircuits = data.response.filter(circuit => circuit.capacity !== null)
+      let activeCircuits = data.response.filter(circuit => 
+        circuit.capacity !== null 
+        && circuit.name !== "Istanbul Park"
+        && circuit.name !== "Hockenheimring"
+        && circuit.name !== "Shanghai International Circuit"
+      )
       setCircuits(activeCircuits)
+      setSelectedCircuit(activeCircuits[0])
     })
   }, [])
 
