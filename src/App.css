@@ -53,3 +53,19 @@ h1 {
   margin: 0;
   padding: 0.5em;
 }
+
+#card-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#card {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+#card h2 {
+  padding-bottom: 2rem;
+}
