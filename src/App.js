@@ -1,16 +1,17 @@
 import './App.css';
-import { useEffect, useState } from 'react'
-import Body from './containers/Body'
-import Header from './components/Header'
+import { useEffect } from 'react';
+import Body from './containers/Body';
+import Header from './components/Header';
+import { useDispatch, useSelector } from 'react-redux';
+import setCircuitsAction from './Redux/actions/setCircuitsAction';
+import setSelectedCircuitAction from './Redux/actions/setSelectedCircuitAction';
 
 function App() {
+  const circuitsUrl = "https://v1.formula-1.api-sports.io/circuits";
 
-  const [circuits, setCircuits] = useState([])
-  const [selectedCircuit, setSelectedCircuit] = useState([])
+  const dispatch = useDispatch();
 
-  const circuitsUrl = "https://v1.formula-1.api-sports.io/circuits"
-
-  useEffect(() => {
+  const getCircuits = () => {
     fetch(circuitsUrl, {
       "method": "GET",
       "headers": {
@@ -27,14 +28,19 @@ function App() {
         && circuit.name !== "Hockenheimring"
         && circuit.name !== "Shanghai International Circuit"
       )
-      setCircuits(activeCircuits)
-      setSelectedCircuit(activeCircuits[0])
+      dispatch(setCircuitsAction(activeCircuits))
+      dispatch(setSelectedCircuitAction(activeCircuits[0]))
     })
-  }, [])
+  }
+
+  useEffect(getCircuits, [])
+
+  const circuits = useSelector(state => state.circuitsReducer)
+  const selectedCircuit = useSelector(state => state.selectedCircuitReducer)
 
   const selectCircuit = (clickedCircuit) => {
     let foundCircuit = circuits.find(circuit => circuit.name === clickedCircuit)
-    setSelectedCircuit(foundCircuit)
+    dispatch(setSelectedCircuitAction(foundCircuit))
   }
 
   return (
