@@ -1,18 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Faster+One&family=Raleway:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
+
+html, body {
+  height: 100%;
+}
+
+#root {
+  background-color: #000000;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 800 400'%3E%3Cdefs%3E%3CradialGradient id='a' cx='396' cy='281' r='514' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23ff0a0a'/%3E%3Cstop offset='1' stop-color='%23000000'/%3E%3C/radialGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='400' y1='148' x2='400' y2='333'%3E%3Cstop offset='0' stop-color='%23ffffff' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23ffffff' stop-opacity='0.5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23a)' width='800' height='400'/%3E%3Cg fill-opacity='0.4'%3E%3Ccircle fill='url(%23b)' cx='267.5' cy='61' r='300'/%3E%3Ccircle fill='url(%23b)' cx='532.5' cy='61' r='300'/%3E%3Ccircle fill='url(%23b)' cx='400' cy='30' r='300'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
 
 .App {
   font-family: 'Raleway', sans-serif;
   display: flex;
   flex-flow: column;
+  height: 100vh;
   align-items: center;
-  background-color: #000000;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 800 400'%3E%3Cdefs%3E%3CradialGradient id='a' cx='396' cy='281' r='514' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23ff0a0a'/%3E%3Cstop offset='1' stop-color='%23000000'/%3E%3C/radialGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='400' y1='148' x2='400' y2='333'%3E%3Cstop offset='0' stop-color='%23ffffff' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23ffffff' stop-opacity='0.5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23a)' width='800' height='400'/%3E%3Cg fill-opacity='0.4'%3E%3Ccircle fill='url(%23b)' cx='267.5' cy='61' r='300'/%3E%3Ccircle fill='url(%23b)' cx='532.5' cy='61' r='300'/%3E%3Ccircle fill='url(%23b)' cx='400' cy='30' r='300'/%3E%3C/g%3E%3C/svg%3E");
-  background-attachment: fixed;
-  background-size: cover;
 }
 
 h1 {
-  font-family: 'Faster One', cursive;
+  font-family: 'Zen Dots', cursive;
   font-size: 44px;
   letter-spacing: 1rem;
 }
@@ -21,10 +31,9 @@ h1 {
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
-  width: 100vw;
-  min-width: 1100px;
+  width: 90%;
   align-self: center;
-  padding-bottom: 50px;
+  padding-bottom: 2rem;
 }
 
 #header h1 {
@@ -36,13 +45,13 @@ h1 {
 #body {
   display: flex;
   flex-flow: row nowrap;
-  width: 80vw;
-  padding-bottom: 50px;
+  width: 100vw;
+  height: fit-content;
 }
 
 #circuit-sidebar {
-  height: fit-content;
-  width: fit-content;
+  height: 100%;
+  width: 20%;
   background-color: rgb(193,0,7);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -65,15 +74,14 @@ h1 {
 #card-container {
   display: flex;
   justify-content: flex-start;
-  width: 100%;
-  padding-left: 3rem;
-  margin-left: 5rem;
+  width: 80%;
 }
 
 #card {
   display: flex;
   flex-flow: column;
   align-items: center;
+  width: 60%;
 }
 
 #card h2 {
@@ -81,12 +89,9 @@ h1 {
 }
 
 #circuit-details {
-  border: 1px rgb(193,0,7) solid;
   height: fit-content;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  margin-left: 3rem;
   min-width: fit-content;
+  color: black;
 }
 
 #circuit-details h3 {
@@ -95,4 +100,34 @@ h1 {
 
 #select-a-circuit {
   margin-left: 300px;
+}
+
+@media only screen and (max-width: 1550px) {
+  h1 {
+    font-size: 34px;
+  }
+  #header img {
+    width: 10%;
+    height: auto;
+  }
+  #card img {
+    width: 75%;
+    height: auto;
+  }
+  .circuit-list-item h5 {
+    padding: 0.25em;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  h1 {
+    font-size: 24px;
+  }
+  #card img {
+    width: 75%;
+    height: auto;
+  }
+  .circuit-list-item h5 {
+    font-size: 0.5rem;
+  }
 }
