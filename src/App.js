@@ -1,5 +1,6 @@
 import './App.css';
 import { useEffect } from 'react';
+import axios from 'axios';
 import Body from './containers/Body';
 import Header from './components/Header';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,17 +13,15 @@ function App() {
   const dispatch = useDispatch();
 
   const getCircuits = () => {
-    fetch(circuitsUrl, {
+    axios(circuitsUrl, {
       "method": "GET",
       "headers": {
         "x-rapidapi-host": "api-formula-1.p.rapidapi.com",
         "x-apisports-key": "feb5832fde82128103f789f9f7745969"
       }
     })
-    .then(response => response.json())
-    .catch(err => console.log(err))
-    .then(data => {
-      let activeCircuits = data.response.filter(circuit => 
+    .then(response => {
+      let activeCircuits = response.data.response.filter(circuit => 
         circuit.capacity !== null 
         && circuit.name !== "Istanbul Park"
         && circuit.name !== "Hockenheimring"
@@ -31,6 +30,7 @@ function App() {
       dispatch(setCircuitsAction(activeCircuits))
       dispatch(setSelectedCircuitAction(activeCircuits[0]))
     })
+    .catch(err => console.log(err))
   }
 
   useEffect(getCircuits, [])
