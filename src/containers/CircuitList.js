@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import CircuitListItem from '../components/CircuitListItem'
+import { CircuitsContext } from '../App';
 
-export default function CircutList({ circuits, selectCircuit }) {
+export default function CircutList({ selectCircuit }) {
+
+    const circuits = useContext(CircuitsContext)
 
     const displayCircuitListItems = () => {
         return circuits.map((circuit, i) => {

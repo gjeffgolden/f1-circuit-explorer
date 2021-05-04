@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import SelectedCircuitCard from '../components/SelectedCircuitCard'
 import CircuitDetails from '../components/CircuitDetails'
+import { SelectedCircuitContext } from "../App";
 
-export default function SelectedCircuit({ selectedCircuit }) {
+export default function SelectedCircuit() {
+
+    const selectedCircuit = useContext(SelectedCircuitContext)
+
     return (
         <div id="card-container">
             <SelectedCircuitCard selectedCircuit={selectedCircuit}/>

@@ -1,11 +1,14 @@
 import './App.css';
-import { useEffect } from 'react';
+import { useEffect, createContext } from 'react';
 import axios from 'axios';
 import Body from './containers/Body';
 import Header from './components/Header';
 import { useDispatch, useSelector } from 'react-redux';
 import setCircuitsAction from './Redux/actions/setCircuitsAction';
 import setSelectedCircuitAction from './Redux/actions/setSelectedCircuitAction';
+
+export const CircuitsContext = createContext(null);
+export const SelectedCircuitContext = createContext(null);
 
 function App() {
   const circuitsUrl = "https://v1.formula-1.api-sports.io/circuits";
@@ -33,7 +36,7 @@ function App() {
     .catch(err => console.log(err))
   }
 
-  useEffect(getCircuits, [])
+  useEffect(getCircuits, [dispatch])
 
   const circuits = useSelector(state => state.circuitsReducer)
   const selectedCircuit = useSelector(state => state.selectedCircuitReducer)
@@ -46,7 +49,11 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Body circuits={circuits} selectCircuit={selectCircuit} selectedCircuit={selectedCircuit}/>
+      <CircuitsContext.Provider value={circuits}>
+      <SelectedCircuitContext.Provider value={selectedCircuit}>
+        <Body selectCircuit={selectCircuit} selectedCircuit={selectedCircuit}/>
+      </SelectedCircuitContext.Provider>
+      </CircuitsContext.Provider>
     </div>
   );
 }

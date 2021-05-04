@@ -1,6 +1,7 @@
 import React from 'react'
 
 export default function SelectedCircuitCard({ selectedCircuit }) {
+
     return (
         <div id="card">
             <h2>{selectedCircuit.name}</h2>
